@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Elementos del Impuesto de Renta</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #f5f7fb;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 20px;
+    }
+
+    .container {
+      max-width: 1100px;
+      width: 100%;
+      background: #ffffff;
+      border-radius: 28px;
+      padding: 44px 44px 40px;
+      box-shadow: 0 8px 40px rgba(3, 34, 61, 0.08);
+    }
+
+    /* ===== HEADER SIN TÍTULO ===== */
+    .header {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      margin-bottom: 36px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid #eef0f6;
+    }
+
+    .instruction {
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 400;
+      color: #6b7a9f;
+      letter-spacing: 0.3px;
+      text-align: right;
+    }
+
+    .instruction span {
+      color: #356289;
+      font-weight: 500;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      align-items: start;
+      grid-auto-rows: 280px;
+    }
+
+    /* Flip Cards - sin JavaScript */
+    .flip-card {
+      background: transparent;
+      height: 280px;
+      perspective: 1200px;
+      border-radius: 18px;
+      position: relative;
+      display: block;
+      transform: none !important;
+    }
+
+    .flip-toggle {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .flip-card-inner {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      transition: transform 0.7s cubic-bezier(0.4, 0.2, 0.2, 1);
+      -webkit-transform-style: preserve-3d;
+      transform-style: preserve-3d;
+      transform-origin: center center;
+      -webkit-transform-origin: center center;
+      border-radius: 18px;
+    }
+
+    .flip-toggle:checked + .flip-card-inner {
+      transform: rotateY(180deg);
+      -webkit-transform: rotateY(180deg);
+    }
+
+    .flip-card-front,
+    .flip-card-back {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      border-radius: 18px;
+      padding: 28px 22px 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      text-align: left;
+      box-shadow: 0 4px 16px rgba(3, 34, 61, 0.04);
+      border: 1.5px solid #eef0f6;
+      overflow: hidden;
+      cursor: pointer;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .flip-card-front {
+      background: #ffffff;
+      color: #03223D;
+      position: relative;
+    }
+
+    .flip-card-front::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      border-radius: 18px 18px 0 0;
+    }
+
+    .flip-card-front .numero {
+      font-size: 0.55rem;
+      font-weight: 700;
+      color: #356289;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .flip-card-front .icono {
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+      line-height: 1;
+    }
+
+    .flip-card-front h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #03223D;
+      line-height: 1.3;
+      margin-bottom: 8px;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .flip-card-front .click-hint {
+      position: absolute;
+      bottom: 14px;
+      font-size: 0.55rem;
+      color: #c8d0df;
+      font-weight: 400;
+      letter-spacing: 0.5px;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .flip-card-back {
+      background: #03223D;
+      color: #ffffff;
+      transform: rotateY(180deg);
+      -webkit-transform: rotateY(180deg);
+      border-color: #356289;
+      align-items: flex-start;
+      text-align: left;
+    }
+
+    .flip-card-back .back-label {
+      font-size: 0.55rem;
+      font-weight: 600;
+      color: #356289;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+      border-bottom: 2px solid rgba(53, 98, 137, 0.3);
+      padding-bottom: 8px;
+      width: 60%;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .flip-card-back p {
+      font-size: 0.88rem;
+      line-height: 1.7;
+      color: rgba(255, 255, 255, 0.92);
+      font-weight: 400;
+      max-width: 100%;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .flip-card-back p strong {
+      color: #ffffff;
+      font-weight: 600;
+    }
+
+    /* Colores de las líneas superiores */
+    .flip-card:nth-child(1) .flip-card-front::before { background: #03223D; }
+    .flip-card:nth-child(2) .flip-card-front::before { background: #356289; }
+    .flip-card:nth-child(3) .flip-card-front::before { background: #4d62c8; }
+    .flip-card:nth-child(4) .flip-card-front::before { background: #5f7ef0; }
+
+    .flip-card-front:hover {
+      border-color: #356289;
+      box-shadow: 0 8px 30px rgba(53, 98, 137, 0.08);
+    }
+
+    @media (max-width: 900px) {
+      .container {
+        padding: 28px 18px 24px;
+        border-radius: 18px;
+      }
+
+      .grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+        grid-auto-rows: 250px;
+      }
+
+      .flip-card { height: 250px; }
+      .flip-card-front h3 { font-size: 0.95rem; }
+      .flip-card-back p { font-size: 0.82rem; }
+
+      .header {
+        justify-content: center;
+      }
+      .instruction {
+        text-align: center;
+        font-size: 0.8rem;
+      }
+    }
+
+    @media (max-width: 550px) {
+      .container { padding: 16px 12px 18px; }
+
+      .grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+        grid-auto-rows: 230px;
+      }
+
+      .flip-card { height: 230px; }
+      .flip-card-front { padding: 20px 16px 18px; }
+      .flip-card-back { padding: 20px 16px 18px; }
+      .flip-card-front h3 { font-size: 0.85rem; }
+      .flip-card-back p { font-size: 0.78rem; }
+      .flip-card-front .icono { font-size: 1.5rem; }
+      .flip-card-front .numero { font-size: 0.45rem; }
+      .flip-card-front .click-hint { font-size: 0.5rem; }
+
+      .instruction {
+        font-size: 0.7rem;
+      }
+    }
+
+    @keyframes fadeInUp {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+
+    .flip-card {
+      opacity: 1;
+      animation: fadeInUp 0.6s ease both;
+    }
+
+    .flip-card:nth-child(1) { animation-delay: 0.05s; }
+    .flip-card:nth-child(2) { animation-delay: 0.12s; }
+    .flip-card:nth-child(3) { animation-delay: 0.19s; }
+    .flip-card:nth-child(4) { animation-delay: 0.26s; }
+
+    ::-webkit-scrollbar {
+      width: 5px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #f0f2f7;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #c8d0df;
+      border-radius: 10px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #356289;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <!-- ===== HEADER SIN TÍTULO ===== -->
+    <div class="header">
+      <div class="instruction">
+        <span>Haga clic sobre la Tarjeta</span> para ampliar la información.
+      </div>
+    </div>
+
+    <div class="grid">
+
+      <!-- Tarjeta 1 -->
+      <div class="flip-card">
+        <input type="checkbox" class="flip-toggle" id="flip-1">
+        <div class="flip-card-inner">
+          <label class="flip-card-front" for="flip-1">
+            <div class="numero">01</div>
+            <div class="icono">🏛️</div>
+            <h3>Sujeto activo</h3>
+            <div class="click-hint">↻ Gira la tarjeta</div>
+          </label>
+          <label class="flip-card-back" for="flip-1">
+            <div class="back-label">Definición</div>
+            <p>el <strong>Estado</strong>.</p>
+          </label>
+        </div>
+      </div>
+
+      <!-- Tarjeta 2 -->
+      <div class="flip-card">
+        <input type="checkbox" class="flip-toggle" id="flip-2">
+        <div class="flip-card-inner">
+          <label class="flip-card-front" for="flip-2">
+            <div class="numero">02</div>
+            <div class="icono">👤</div>
+            <h3>Sujeto pasivo</h3>
+            <div class="click-hint">↻ Gira la tarjeta</div>
+          </label>
+          <label class="flip-card-back" for="flip-2">
+            <div class="back-label">Definición</div>
+            <p><strong>todo contribuyente</strong> que perciba ingresos susceptibles de incrementar su patrimonio.</p>
+          </label>
+        </div>
+      </div>
+
+      <!-- Tarjeta 3 -->
+      <div class="flip-card">
+        <input type="checkbox" class="flip-toggle" id="flip-3">
+        <div class="flip-card-inner">
+          <label class="flip-card-front" for="flip-3">
+            <div class="numero">03</div>
+            <div class="icono">📊</div>
+            <h3>Base gravable</h3>
+            <div class="click-hint">↻ Gira la tarjeta</div>
+          </label>
+          <label class="flip-card-back" for="flip-3">
+            <div class="back-label">Definición</div>
+            <p>la base gravable será el resultado de tomar los <strong>ingresos</strong>, restar los <strong>costos</strong>, <strong>deducciones</strong> y otros.</p>
+          </label>
+        </div>
+      </div>
+
+      <!-- Tarjeta 4 -->
+      <div class="flip-card">
+        <input type="checkbox" class="flip-toggle" id="flip-4">
+        <div class="flip-card-inner">
+          <label class="flip-card-front" for="flip-4">
+            <div class="numero">04</div>
+            <div class="icono">📈</div>
+            <h3>Tarifa</h3>
+            <div class="click-hint">↻ Gira la tarjeta</div>
+          </label>
+          <label class="flip-card-back" for="flip-4">
+            <div class="back-label">Definición</div>
+            <p>para <strong>personas jurídicas</strong>, la tarifa general es del <strong>35%</strong>; sin embargo, hay unas tarifas preferenciales para entidades determinadas por la ley.</p>
+          </label>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</body>
+</html>
