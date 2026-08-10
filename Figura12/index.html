@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Condiciones tributarias</title>
+  <title>Elementos del Impuesto</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -51,7 +51,7 @@
 
     .item {
       display: grid;
-      grid-template-columns: 120px 1fr;
+      grid-template-columns: 160px 1fr;
       align-items: stretch;
 
       opacity: 0;
@@ -80,9 +80,11 @@
 
       color: #ffffff;
 
-      font-size: clamp(2rem, 3.5vw, 3.5rem);
-      font-weight: 800;
-      line-height: 1;
+      font-size: clamp(1rem, 1.8vw, 1.5rem);
+      font-weight: 700;
+      line-height: 1.2;
+      text-align: center;
+      padding: 10px;
 
       z-index: 2;
 
@@ -105,10 +107,12 @@
       background: #356289;
     }
 
-    .item:nth-child(3) .sigla,
-    .item:nth-child(4) .sigla,
-    .item:nth-child(5) .sigla {
+    .item:nth-child(3) .sigla {
       background: #43388F;
+    }
+
+    .item:nth-child(4) .sigla {
+      background: #4d62c8;
     }
 
     /* =========================================
@@ -145,10 +149,12 @@
       border-color: #356289;
     }
 
-    .item:nth-child(3) .texto,
-    .item:nth-child(4) .texto,
-    .item:nth-child(5) .texto {
+    .item:nth-child(3) .texto {
       border-color: #43388F;
+    }
+
+    .item:nth-child(4) .texto {
+      border-color: #4d62c8;
     }
 
     /* =========================================
@@ -200,12 +206,12 @@
     @media (max-width: 900px) {
 
       .item {
-        grid-template-columns: 90px 1fr;
+        grid-template-columns: 120px 1fr;
       }
 
       .sigla {
         min-height: 100px;
-        font-size: clamp(1.6rem, 5vw, 2.5rem);
+        font-size: clamp(0.8rem, 2vw, 1.2rem);
       }
 
       .texto {
@@ -229,12 +235,12 @@
       }
 
       .item {
-        grid-template-columns: 70px 1fr;
+        grid-template-columns: 90px 1fr;
       }
 
       .sigla {
         min-height: 92px;
-        font-size: 1.6rem;
+        font-size: 0.7rem;
       }
 
       .texto {
@@ -252,11 +258,11 @@
     @media (max-width: 420px) {
 
       .item {
-        grid-template-columns: 58px 1fr;
+        grid-template-columns: 75px 1fr;
       }
 
       .sigla {
-        font-size: 1.25rem;
+        font-size: 0.6rem;
       }
 
       .texto {
@@ -285,71 +291,57 @@
 
     <section
       class="lista"
-      aria-label="Condiciones tributarias"
+      aria-label="Elementos del Impuesto"
     >
 
+      <!-- Hecho Generador -->
       <article class="item" data-delay="0">
 
         <div class="sigla">
-          P
+          Hecho<br>Generador
         </div>
 
         <div class="texto">
-          Que el patrimonio bruto en el último día del año gravable
-          no exceda de cuatro mil quinientas (4.500) UVT.
+          Obtención de ingresos susceptibles de producir un incremento patrimonial.
         </div>
 
       </article>
 
+      <!-- Base Gravable -->
       <article class="item" data-delay="1">
 
         <div class="sigla">
-          I
+          Base<br>Gravable
         </div>
 
         <div class="texto">
-          Que los ingresos brutos sean inferiores a mil cuatrocientos
-          (1.400) UVT.
+          Ingresos brutos obtenidos en el año (No se toman devoluciones, rebajas y descuentos).
         </div>
 
       </article>
 
+      <!-- Sujeto Pasivo -->
       <article class="item" data-delay="2">
 
         <div class="sigla">
-          CT
+          Sujeto<br>Pasivo
         </div>
 
         <div class="texto">
-          Que los consumos mediante tarjeta de crédito no excedan de
-          mil cuatrocientos (1.400) UVT.
+          Personas naturales y jurídicas que cumplan la totalidad de las condiciones.
         </div>
 
       </article>
 
+      <!-- Tarifa -->
       <article class="item" data-delay="3">
 
         <div class="sigla">
-          C
+          Tarifa
         </div>
 
         <div class="texto">
-          Que el valor total de compras y consumos no supere los mil
-          cuatrocientos (1.400) UVT.
-        </div>
-
-      </article>
-
-      <article class="item" data-delay="4">
-
-        <div class="sigla">
-          CG
-        </div>
-
-        <div class="texto">
-          Que el valor total acumulado de consignaciones bancarias,
-          depósitos o inversiones financieras, no excedan de mil
-          cuatrocientos (1.400) UVT.
+          Depende de la actividad y de los ingresos brutos.
         </div>
 
       </article>
