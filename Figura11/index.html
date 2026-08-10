@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Base gravable</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 30px 20px;
+      background: #ffffff;
+      font-family: "Poppins", sans-serif;
+      overflow-x: hidden;
+    }
+
+    .contenedor {
+      width: 100%;
+      max-width: 1250px;
+    }
+
+    .bloques {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .fila {
+      position: relative;
+      display: flex;
+      align-items: center;
+      min-height: 150px;
+
+      opacity: 0;
+      transform: translateY(-120px) scale(0.97);
+      filter: blur(5px);
+    }
+
+    .fila.visible {
+      animation: entradaSuperior 0.85s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    .circulo {
+      position: relative;
+      z-index: 2;
+      width: 150px;
+      height: 150px;
+      min-width: 150px;
+      border-radius: 50%;
+      background: #ffffff;
+      border: 16px solid;
+    }
+
+    .barra {
+      position: relative;
+      margin-left: -28px;
+      flex: 1;
+      min-height: 144px;
+      border-radius: 0 18px 18px 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px 32px;
+      text-align: center;
+      color: #ffffff;
+    }
+
+    .barra h2 {
+      font-size: clamp(1.8rem, 3.6vw, 3rem);
+      font-weight: 700;
+      line-height: 1.15;
+    }
+
+    .fila-1 .circulo,
+    .fila-1 .barra {
+      border-color: #03223D;
+      background: #03223D;
+    }
+
+    .fila-2 .circulo,
+    .fila-2 .barra {
+      border-color: #3f73a3;
+      background: #3f73a3;
+    }
+
+    .fila-3 .circulo,
+    .fila-3 .barra {
+      border-color: #463d97;
+      background: #463d97;
+    }
+
+    .fila-1 .circulo,
+    .fila-2 .circulo,
+    .fila-3 .circulo {
+      background: #ffffff;
+    }
+
+    .fila:hover {
+      transform: translateY(-4px);
+      transition: transform 0.3s ease, filter 0.3s ease;
+      filter: drop-shadow(0 10px 18px rgba(3, 34, 61, 0.12));
+    }
+
+    @keyframes entradaSuperior {
+      0% {
+        opacity: 0;
+        transform: translateY(-120px) scale(0.97);
+        filter: blur(5px);
+      }
+
+      65% {
+        opacity: 1;
+        transform: translateY(10px) scale(1.01);
+        filter: blur(0);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+      }
+    }
+
+    @media (max-width: 900px) {
+      .fila {
+        min-height: 120px;
+      }
+
+      .circulo {
+        width: 120px;
+        height: 120px;
+        min-width: 120px;
+        border-width: 13px;
+      }
+
+      .barra {
+        min-height: 116px;
+        padding: 18px 20px;
+      }
+
+      .barra h2 {
+        font-size: clamp(1.3rem, 3.4vw, 2.2rem);
+      }
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 20px 12px;
+      }
+
+      .bloques {
+        gap: 16px;
+      }
+
+      .fila {
+        min-height: 95px;
+      }
+
+      .circulo {
+        width: 90px;
+        height: 90px;
+        min-width: 90px;
+        border-width: 10px;
+      }
+
+      .barra {
+        min-height: 90px;
+        margin-left: -18px;
+        padding: 14px 16px;
+        border-radius: 0 14px 14px 0;
+      }
+
+      .barra h2 {
+        font-size: clamp(1rem, 4vw, 1.5rem);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .fila {
+        opacity: 1;
+        transform: none;
+        filter: none;
+        animation: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <main class="contenedor">
+    <section class="bloques" aria-label="Cálculo de base gravable">
+
+      <article class="fila fila-1" data-delay="0">
+        <div class="circulo"></div>
+        <div class="barra">
+          <h2>Patrimonio bruto a 1 de enero</h2>
+        </div>
+      </article>
+
+      <article class="fila fila-2" data-delay="1">
+        <div class="circulo"></div>
+        <div class="barra">
+          <h2>(-) deudas</h2>
+        </div>
+      </article>
+
+      <article class="fila fila-3" data-delay="2">
+        <div class="circulo"></div>
+        <div class="barra">
+          <h2>Base Gravable</h2>
+        </div>
+      </article>
+
+    </section>
+  </main>
+
+  <script>
+    const filas = document.querySelectorAll(".fila");
+    let animacionEjecutada = false;
+
+    function ejecutarAnimacion() {
+      if (animacionEjecutada) return;
+      animacionEjecutada = true;
+
+      filas.forEach((fila, index) => {
+        const orden = Number(fila.dataset.delay) || index;
+
+        setTimeout(() => {
+          fila.classList.add("visible");
+        }, 300 + orden * 650);
+      });
+    }
+
+    window.addEventListener("load", ejecutarAnimacion);
+
+    if (document.readyState === "complete") {
+      ejecutarAnimacion();
+    }
+  </script>
+
+</body>
+</html>
