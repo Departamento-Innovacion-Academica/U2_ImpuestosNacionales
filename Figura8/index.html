@@ -4,13 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Efectos de la Residencia Fiscal</title>
+  <title>Renta - Residente y no residente</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
   <link
-    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&display=swap"
     rel="stylesheet"
   >
 
@@ -24,9 +24,9 @@
     body {
       min-height: 100vh;
       display: flex;
-      justify-content: center;
       align-items: center;
-      padding: 30px 16px;
+      justify-content: center;
+      padding: 30px 18px;
       background: #ffffff;
       font-family: "Poppins", sans-serif;
       overflow-x: hidden;
@@ -35,276 +35,277 @@
     .diagrama {
       position: relative;
       width: 100%;
-      max-width: 850px;
-      min-height: 520px;
-
-      display: grid;
-      grid-template-columns: 180px 120px 1fr;
-      align-items: center;
+      max-width: 1000px;
+      min-height: 560px;
     }
 
-    /* ==============================
-       BLOQUE RENTA
-    ============================== */
+    /* =================================
+       BLOQUES
+    ================================= */
 
-    .estatuto {
-      position: relative;
-      z-index: 3;
-
-      width: 180px;
-      height: 480px;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      background: #03223D;
-      border-radius: 18px 0 0 18px;
-
-      opacity: 0;
-      transform: translateX(-80px) scale(0.96);
-    }
-
-    .estatuto.visible {
-      animation: entradaEstatuto 0.9s
-        cubic-bezier(0.22, 1, 0.36, 1) forwards;
-    }
-
-    .estatuto span {
-      color: #ffffff;
-      font-size: clamp(1.4rem, 2.8vw, 2.2rem);
-      font-weight: 400;
-      letter-spacing: 1px;
-      white-space: nowrap;
-
-      transform: rotate(-90deg);
-    }
-
-    /* ==============================
-       CONECTOR
-    ============================== */
-
-    .conector {
-      position: relative;
-      width: 120px;
-      height: 480px;
-    }
-
-    .linea-central,
-    .linea-vertical,
-    .linea-superior,
-    .linea-medio,
-    .linea-inferior {
+    .bloque {
       position: absolute;
-      display: block;
-      background: #356289;
-      border-radius: 10px;
-    }
-
-    .linea-central {
-      top: 50%;
-      left: 0;
-      width: 50px;
-      height: 4px;
-
-      transform: translateY(-50%) scaleX(0);
-      transform-origin: left center;
-    }
-
-    .linea-vertical {
-      top: 25%;
-      left: 48px;
-      width: 4px;
-      height: 50%;
-
-      transform: scaleY(0);
-      transform-origin: center center;
-    }
-
-    .linea-superior {
-      top: 25%;
-      left: 48px;
-      width: 75px;
-      height: 4px;
-
-      transform: scaleX(0);
-      transform-origin: left center;
-    }
-
-    .linea-medio {
-      top: 50%;
-      left: 48px;
-      width: 75px;
-      height: 4px;
-
-      transform: translateY(-50%) scaleX(0);
-      transform-origin: left center;
-    }
-
-    .linea-inferior {
-      bottom: 25%;
-      left: 48px;
-      width: 75px;
-      height: 4px;
-
-      transform: scaleX(0);
-      transform-origin: left center;
-    }
-
-    .conector.visible .linea-central {
-      animation: dibujarHorizontal 0.35s ease forwards;
-    }
-
-    .conector.visible .linea-vertical {
-      animation: dibujarVertical 0.55s ease 0.25s forwards;
-    }
-
-    .conector.visible .linea-superior,
-    .conector.visible .linea-medio,
-    .conector.visible .linea-inferior {
-      animation: dibujarHorizontal 0.4s ease 0.7s forwards;
-    }
-
-    /* ==============================
-       TARJETAS
-    ============================== */
-
-    .niveles {
-      position: relative;
-      z-index: 2;
-
       display: flex;
-      flex-direction: column;
-      justify-content: center;
-      gap: 28px;
-    }
-
-    .nivel {
-      width: 100%;
-      min-height: 120px;
-      padding: 20px 24px;
-
-      display: flex;
-      flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 8px;
 
-      background: #356289;
+      padding: 18px;
+      border-radius: 12px;
+
       color: #ffffff;
       text-align: center;
 
       opacity: 0;
-      transform: translateX(120px) scale(0.92);
-      box-shadow: 0 16px 32px rgba(3, 34, 61, 0);
-    }
 
-    .nivel.visible {
-      animation: entradaTarjeta 0.8s
-        cubic-bezier(0.22, 1, 0.36, 1) forwards;
-    }
-
-    .nivel .titulo {
-      font-size: clamp(1.4rem, 3.5vw, 2.8rem);
-      font-weight: 400;
-      line-height: 1.15;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    .nivel .sub-items {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-      margin-top: 4px;
-    }
-
-    .nivel .sub-item {
-      font-size: clamp(0.9rem, 2vw, 1.3rem);
-      font-weight: 300;
-      opacity: 0.9;
-      letter-spacing: 0.5px;
-      background: rgba(255, 255, 255, 0.10);
-      padding: 4px 16px;
-      border-radius: 8px;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-    }
-
-    .nivel .sub-item.destacado {
-      background: rgba(255, 255, 255, 0.18);
-      border-color: rgba(255, 255, 255, 0.15);
-    }
-
-    /* Colores diferentes para cada nivel */
-    .nivel:nth-child(1) {
-      background: #356289;
-    }
-
-    .nivel:nth-child(2) {
-      background: #4d62c8;
-    }
-
-    /* Efecto al pasar el cursor */
-
-    .nivel,
-    .estatuto {
       transition:
         transform 0.3s ease,
         box-shadow 0.3s ease,
-        background 0.3s ease;
+        filter 0.3s ease;
+
+      z-index: 3;
     }
 
-    .nivel:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 14px 32px rgba(3, 34, 61, 0.14);
+    .bloque h2 {
+      font-size: clamp(1.2rem, 2.1vw, 2.1rem);
+      font-weight: 800;
+      line-height: 1.1;
+      text-transform: uppercase;
     }
 
-    .nivel:nth-child(1):hover {
-      background: #2a4f72;
+    /* =================================
+       RENTA
+    ================================= */
+
+    .renta {
+      left: 0;
+      top: 50%;
+      width: 30%;
+      height: 140px;
+
+      background: #03223D;
+
+      transform: translateY(-50%) translateX(-120px);
     }
 
-    .nivel:nth-child(2):hover {
-      background: #3d52b0;
+    .renta.visible {
+      animation: entradaIzquierda 0.8s
+        cubic-bezier(0.22, 1, 0.36, 1) forwards;
     }
 
-    /* ==============================
+    /* =================================
+       RESIDENTE
+    ================================= */
+
+    .residente {
+      left: 42%;
+      top: 30px;
+
+      width: 30%;
+      height: 140px;
+
+      background: #356289;
+
+      transform: translateX(120px);
+    }
+
+    .residente.visible {
+      animation: entradaDerecha 0.8s
+        cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    /* =================================
+       NO RESIDENTE
+    ================================= */
+
+    .no-residente {
+      left: 42%;
+      bottom: 30px;
+
+      width: 30%;
+      height: 140px;
+
+      background: #356289;
+
+      transform: translateX(120px);
+    }
+
+    .no-residente.visible {
+      animation: entradaDerecha 0.8s
+        cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    .no-residente h2 {
+      font-size: clamp(1.1rem, 1.8vw, 1.8rem);
+    }
+
+    /* =================================
+       BLOQUES DERECHA
+    ================================= */
+
+    .colombia-residente {
+      right: 0;
+      top: 0;
+
+      width: 20%;
+      height: 140px;
+
+      background: #4d62c8;
+
+      transform: translateX(120px);
+    }
+
+    .exterior {
+      right: 0;
+      top: 175px;
+
+      width: 20%;
+      height: 140px;
+
+      background: #4d62c8;
+
+      transform: translateX(120px);
+    }
+
+    .colombia-no-residente {
+      right: 0;
+      bottom: 30px;
+
+      width: 20%;
+      height: 140px;
+
+      background: #4d62c8;
+
+      transform: translateX(120px);
+    }
+
+    .colombia-residente.visible,
+    .exterior.visible,
+    .colombia-no-residente.visible {
+      animation: entradaDerecha 0.8s
+        cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    /* =================================
+       LÍNEAS
+    ================================= */
+
+    .linea {
+      position: absolute;
+      height: 2.5px;
+      background: #356289;
+      z-index: 1;
+
+      transform: scaleX(0);
+    }
+
+    /* Renta -> Residente */
+
+    .linea-renta-residente {
+      left: 29%;
+      top: 50%;
+      width: 18%;
+      transform-origin: left center;
+      rotate: -43deg;
+    }
+
+    /* Renta -> No residente */
+
+    .linea-renta-no {
+      left: 29%;
+      top: 50%;
+      width: 18%;
+      transform-origin: left center;
+      rotate: 43deg;
+    }
+
+    /* Residente -> Colombia */
+
+    .linea-residente-colombia {
+      left: 70%;
+      top: 16%;
+      width: 18%;
+      transform-origin: left center;
+      rotate: -30deg;
+    }
+
+    /* Residente -> Exterior */
+
+    .linea-residente-exterior {
+      left: 70%;
+      top: 27%;
+      width: 18%;
+      transform-origin: left center;
+      rotate: 30deg;
+    }
+
+    /* No residente -> Colombia */
+
+    .linea-no-colombia {
+      left: 70%;
+      bottom: 17%;
+      width: 18%;
+      transform-origin: left center;
+    }
+
+    .linea.visible {
+      animation: dibujarLinea 0.6s ease forwards;
+    }
+
+    /* =================================
+       HOVER
+    ================================= */
+
+    .bloque:hover {
+      filter: brightness(1.06);
+      box-shadow: 0 14px 30px rgba(3, 34, 61, 0.16);
+      transform: translateY(-5px);
+    }
+
+    /* =================================
        ANIMACIONES
-    ============================== */
+    ================================= */
 
-    @keyframes entradaEstatuto {
+    @keyframes entradaIzquierda {
       0% {
         opacity: 0;
-        transform: translateX(-80px) scale(0.96);
-      }
-
-      100% {
-        opacity: 1;
-        transform: translateX(0) scale(1);
-      }
-    }
-
-    @keyframes entradaTarjeta {
-      0% {
-        opacity: 0;
-        transform: translateX(120px) scale(0.92);
+        transform: translateY(-50%) translateX(-120px);
         filter: blur(6px);
       }
 
       65% {
         opacity: 1;
-        transform: translateX(-8px) scale(1.01);
+        transform: translateY(-50%) translateX(8px);
         filter: blur(0);
       }
 
       100% {
         opacity: 1;
-        transform: translateX(0) scale(1);
+        transform: translateY(-50%) translateX(0);
         filter: blur(0);
-        box-shadow: 0 10px 24px rgba(3, 34, 61, 0.1);
       }
     }
 
-    @keyframes dibujarHorizontal {
+    @keyframes entradaDerecha {
+      0% {
+        opacity: 0;
+        transform: translateX(120px);
+        filter: blur(6px);
+      }
+
+      65% {
+        opacity: 1;
+        transform: translateX(-8px);
+        filter: blur(0);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateX(0);
+        filter: blur(0);
+      }
+    }
+
+    @keyframes dibujarLinea {
       from {
         transform: scaleX(0);
       }
@@ -314,159 +315,78 @@
       }
     }
 
-    @keyframes dibujarVertical {
-      from {
-        transform: scaleY(0);
-      }
-
-      to {
-        transform: scaleY(1);
-      }
-    }
-
-    /* ==============================
+    /* =================================
        RESPONSIVE
-    ============================== */
+    ================================= */
 
-    @media (max-width: 850px) {
+    @media (max-width: 820px) {
+
       .diagrama {
-        max-width: 500px;
         min-height: auto;
-
-        grid-template-columns: 1fr;
-        gap: 18px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
       }
 
-      .estatuto {
+      .bloque {
+        position: relative;
+        top: auto;
+        left: auto;
+        right: auto;
+        bottom: auto;
+
         width: 100%;
         height: auto;
         min-height: 90px;
 
-        border-radius: 18px;
-
-        transform: translateY(-50px) scale(0.96);
+        transform: translateY(50px);
       }
 
-      .estatuto span {
-        transform: none;
-        white-space: normal;
-        text-align: center;
-        font-size: clamp(1.5rem, 6vw, 2.4rem);
+      .renta {
+        transform: translateY(50px);
       }
 
-      .conector {
-        width: 100%;
-        height: 60px;
+      .renta.visible,
+      .residente.visible,
+      .no-residente.visible,
+      .colombia-residente.visible,
+      .exterior.visible,
+      .colombia-no-residente.visible {
+        animation: entradaAbajoMovil 0.8s
+          cubic-bezier(0.22, 1, 0.36, 1) forwards;
       }
 
-      .linea-central {
-        top: 0;
-        left: 50%;
-
-        width: 4px;
-        height: 60px;
-
-        transform: translateX(-50%) scaleY(0);
-        transform-origin: top center;
-      }
-
-      .linea-vertical,
-      .linea-superior,
-      .linea-medio,
-      .linea-inferior {
+      .linea {
         display: none;
       }
 
-      .conector.visible .linea-central {
-        animation: dibujarVertical 0.5s ease forwards;
-      }
-
-      .niveles {
-        gap: 14px;
-      }
-
-      .nivel {
-        min-height: 90px;
-        border-radius: 12px;
-        transform: translateY(50px) scale(0.94);
-        padding: 16px 18px;
-      }
-
-      .nivel .titulo {
-        font-size: clamp(1.2rem, 5vw, 2rem);
-      }
-
-      .nivel .sub-item {
-        font-size: clamp(0.8rem, 3vw, 1.1rem);
-      }
-
-      @keyframes entradaTarjeta {
-        0% {
-          opacity: 0;
-          transform: translateY(50px) scale(0.94);
-          filter: blur(5px);
-        }
-
-        100% {
-          opacity: 1;
-          transform: translateY(0) scale(1);
-          filter: blur(0);
-          box-shadow: 0 10px 24px rgba(3, 34, 61, 0.1);
-        }
-      }
-
-      @keyframes entradaEstatuto {
-        0% {
-          opacity: 0;
-          transform: translateY(-50px) scale(0.96);
-        }
-
-        100% {
-          opacity: 1;
-          transform: translateY(0) scale(1);
-        }
+      .bloque h2,
+      .no-residente h2 {
+        font-size: clamp(1.2rem, 5vw, 1.8rem);
       }
     }
 
-    @media (max-width: 480px) {
-      body {
-        padding: 18px 10px;
+    @keyframes entradaAbajoMovil {
+      0% {
+        opacity: 0;
+        transform: translateY(50px);
+        filter: blur(5px);
       }
 
-      .estatuto {
-        min-height: 75px;
-        border-radius: 14px;
-      }
-
-      .nivel {
-        min-height: 80px;
-        padding: 12px 14px;
-        border-radius: 10px;
-      }
-
-      .nivel .titulo {
-        font-size: 1.1rem;
-      }
-
-      .nivel .sub-item {
-        font-size: 0.75rem;
-        padding: 2px 10px;
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
       }
     }
-
-    /* Accesibilidad */
 
     @media (prefers-reduced-motion: reduce) {
-      .estatuto,
-      .nivel,
-      .linea-central,
-      .linea-vertical,
-      .linea-superior,
-      .linea-medio,
-      .linea-inferior {
-        animation: none !important;
+      .bloque,
+      .linea {
         opacity: 1;
-        transform: none;
+        transform: none !important;
+        animation: none !important;
+        filter: none;
       }
     }
   </style>
@@ -474,74 +394,130 @@
 
 <body>
 
-  <main class="diagrama" aria-label="Efectos de la residencia fiscal">
+  <main class="diagrama" aria-label="Clasificación de renta">
 
-    <section class="estatuto" id="estatuto">
-      <span>RENTA</span>
-    </section>
+    <!-- RENTA -->
+    <article class="bloque renta" id="renta">
+      <h2>Renta</h2>
+    </article>
 
-    <div class="conector" id="conector" aria-hidden="true">
-      <span class="linea-central"></span>
-      <span class="linea-vertical"></span>
-      <span class="linea-superior"></span>
-      <span class="linea-medio"></span>
-      <span class="linea-inferior"></span>
-    </div>
+    <!-- RAMAS DESDE RENTA -->
+    <span class="linea linea-renta-residente" id="linea1"></span>
+    <span class="linea linea-renta-no" id="linea2"></span>
 
-    <section class="niveles">
+    <!-- NIVEL 2 -->
+    <article class="bloque residente" id="residente">
+      <h2>Residente</h2>
+    </article>
 
-      <!-- Residente -->
-      <article class="nivel">
-        <div class="titulo">Residente</div>
-        <div class="sub-items">
-          <span class="sub-item">Colombia</span>
-          <span class="sub-item destacado">En el exterior</span>
-        </div>
-      </article>
+    <article class="bloque no-residente" id="noResidente">
+      <h2>No residente</h2>
+    </article>
 
-      <!-- No Residente -->
-      <article class="nivel">
-        <div class="titulo">No Residente</div>
-        <div class="sub-items">
-          <span class="sub-item destacado">Colombia</span>
-          <span class="sub-item">En el exterior</span>
-        </div>
-      </article>
+    <!-- RAMAS DESDE RESIDENTE -->
+    <span class="linea linea-residente-colombia" id="linea3"></span>
+    <span class="linea linea-residente-exterior" id="linea4"></span>
 
-    </section>
+    <!-- RAMA DESDE NO RESIDENTE -->
+    <span class="linea linea-no-colombia" id="linea5"></span>
+
+    <!-- NIVEL 3 -->
+    <article class="bloque colombia-residente" id="colombiaResidente">
+      <h2>En<br>Colombia</h2>
+    </article>
+
+    <article class="bloque exterior" id="exterior">
+      <h2>En el<br>exterior</h2>
+    </article>
+
+    <article class="bloque colombia-no-residente" id="colombiaNoResidente">
+      <h2>En<br>Colombia</h2>
+    </article>
 
   </main>
 
   <script>
-    const estatuto = document.getElementById("estatuto");
-    const conector = document.getElementById("conector");
-    const niveles = document.querySelectorAll(".nivel");
+    const renta = document.getElementById("renta");
+
+    const residente = document.getElementById("residente");
+    const noResidente = document.getElementById("noResidente");
+
+    const colombiaResidente =
+      document.getElementById("colombiaResidente");
+
+    const exterior =
+      document.getElementById("exterior");
+
+    const colombiaNoResidente =
+      document.getElementById("colombiaNoResidente");
+
+    const linea1 = document.getElementById("linea1");
+    const linea2 = document.getElementById("linea2");
+    const linea3 = document.getElementById("linea3");
+    const linea4 = document.getElementById("linea4");
+    const linea5 = document.getElementById("linea5");
 
     let animacionEjecutada = false;
 
     function ejecutarAnimacion() {
+
       if (animacionEjecutada) return;
 
       animacionEjecutada = true;
 
+      // 1. Renta
       setTimeout(() => {
-        estatuto.classList.add("visible");
+        renta.classList.add("visible");
       }, 300);
 
+      // 2. Ramas principales
       setTimeout(() => {
-        conector.classList.add("visible");
-      }, 1000);
+        linea1.classList.add("visible");
+        linea2.classList.add("visible");
+      }, 1100);
 
+      // 3. Residente
       setTimeout(() => {
-        niveles[0].classList.add("visible");
-      }, 1800);
+        residente.classList.add("visible");
+      }, 1700);
 
+      // 4. No residente
       setTimeout(() => {
-        niveles[1].classList.add("visible");
-      }, 2500);
+        noResidente.classList.add("visible");
+      }, 2300);
+
+      // 5. Ramas desde residente
+      setTimeout(() => {
+        linea3.classList.add("visible");
+        linea4.classList.add("visible");
+      }, 3000);
+
+      // 6. En Colombia - residente
+      setTimeout(() => {
+        colombiaResidente.classList.add("visible");
+      }, 3600);
+
+      // 7. En el exterior
+      setTimeout(() => {
+        exterior.classList.add("visible");
+      }, 4200);
+
+      // 8. Rama no residente
+      setTimeout(() => {
+        linea5.classList.add("visible");
+      }, 4800);
+
+      // 9. En Colombia - no residente
+      setTimeout(() => {
+        colombiaNoResidente.classList.add("visible");
+      }, 5400);
     }
 
     window.addEventListener("load", ejecutarAnimacion);
+
+    if (document.readyState === "complete") {
+      ejecutarAnimacion();
+    }
   </script>
 
 </body>
