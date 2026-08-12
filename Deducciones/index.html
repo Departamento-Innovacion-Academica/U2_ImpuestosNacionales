@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
   <link
-    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap"
     rel="stylesheet"
   >
 
@@ -44,7 +44,7 @@
     }
 
     /* ==============================
-       BLOQUE DEDUCCIONES
+       BLOQUE DEDUCCIONES - MÁS GRANDE Y NEGRITA
     ============================== */
 
     .estatuto {
@@ -72,9 +72,9 @@
 
     .estatuto span {
       color: #ffffff;
-      font-size: clamp(1.4rem, 2.8vw, 2.2rem);
-      font-weight: 400;
-      letter-spacing: 1px;
+      font-size: clamp(2.2rem, 4.5vw, 3.8rem);
+      font-weight: 900;
+      letter-spacing: 2px;
       white-space: nowrap;
 
       transform: rotate(-90deg);
@@ -166,7 +166,7 @@
     }
 
     /* ==============================
-       TARJETAS
+       TARJETAS - MÁS PEQUEÑAS
     ============================== */
 
     .niveles {
@@ -202,20 +202,20 @@
         cubic-bezier(0.22, 1, 0.36, 1) forwards;
     }
 
-    .nivel h2 {
-      font-size: clamp(1.4rem, 3.5vw, 2.8rem);
+    .nivel h3 {
+      font-size: clamp(1.2rem, 2.5vw, 2.2rem);
       font-weight: 400;
       line-height: 1.15;
       text-transform: uppercase;
       letter-spacing: 1px;
     }
 
-    .nivel:nth-child(2) h2 {
-      font-size: clamp(1.1rem, 2.5vw, 2rem);
+    .nivel:nth-child(2) h3 {
+      font-size: clamp(1rem, 2vw, 1.8rem);
     }
 
-    .nivel:nth-child(3) h2 {
-      font-size: clamp(1.1rem, 2.5vw, 2rem);
+    .nivel:nth-child(3) h3 {
+      font-size: clamp(1rem, 2vw, 1.8rem);
     }
 
     /* Efecto al pasar el cursor */
@@ -318,7 +318,7 @@
         transform: none;
         white-space: normal;
         text-align: center;
-        font-size: clamp(1.5rem, 6vw, 2.4rem);
+        font-size: clamp(2rem, 8vw, 3.2rem);
       }
 
       .conector {
@@ -356,6 +356,18 @@
         min-height: 90px;
         border-radius: 12px;
         transform: translateY(50px) scale(0.94);
+      }
+
+      .nivel h3 {
+        font-size: clamp(1.2rem, 4vw, 1.8rem);
+      }
+
+      .nivel:nth-child(2) h3 {
+        font-size: clamp(1rem, 3.5vw, 1.5rem);
+      }
+
+      .nivel:nth-child(3) h3 {
+        font-size: clamp(1rem, 3.5vw, 1.5rem);
       }
 
       @keyframes entradaTarjeta {
@@ -396,22 +408,26 @@
         border-radius: 14px;
       }
 
+      .estatuto span {
+        font-size: clamp(1.8rem, 7vw, 2.6rem);
+      }
+
       .nivel {
         min-height: 75px;
         padding: 14px 12px;
         border-radius: 10px;
       }
 
-      .nivel h2 {
-        font-size: 1.3rem;
+      .nivel h3 {
+        font-size: clamp(1rem, 4vw, 1.4rem);
       }
 
-      .nivel:nth-child(2) h2 {
-        font-size: 1rem;
+      .nivel:nth-child(2) h3 {
+        font-size: clamp(0.9rem, 3.5vw, 1.2rem);
       }
 
-      .nivel:nth-child(3) h2 {
-        font-size: 1rem;
+      .nivel:nth-child(3) h3 {
+        font-size: clamp(0.9rem, 3.5vw, 1.2rem);
       }
     }
 
@@ -452,15 +468,15 @@
     <section class="niveles">
 
       <article class="nivel">
-        <h2>Gastos de<br>Administración</h2>
+        <h3>Gastos de<br>Administración</h3>
       </article>
 
       <article class="nivel">
-        <h2>Gastos de<br>Ventas</h2>
+        <h3>Gastos de<br>Ventas</h3>
       </article>
 
       <article class="nivel">
-        <h2>Gastos Financieros<br>y Otros</h2>
+        <h3>Gastos Financieros<br>y Otros</h3>
       </article>
 
     </section>
