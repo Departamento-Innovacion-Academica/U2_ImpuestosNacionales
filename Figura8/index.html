@@ -65,15 +65,8 @@
       z-index: 3;
     }
 
-    .bloque h2 {
-      font-size: clamp(1.2rem, 2.1vw, 2.1rem);
-      font-weight: 800;
-      line-height: 1.1;
-      text-transform: uppercase;
-    }
-
     /* =================================
-       RENTA
+       RENTA - MÁS GRANDE
     ================================= */
 
     .renta {
@@ -92,8 +85,14 @@
         cubic-bezier(0.22, 1, 0.36, 1) forwards;
     }
 
+    .renta h2 {
+      font-size: clamp(2.2rem, 4vw, 3.8rem);
+      font-weight: 900;
+      letter-spacing: 2px;
+    }
+
     /* =================================
-       RESIDENTE
+       RESIDENTE - MÁS PEQUEÑO
     ================================= */
 
     .residente {
@@ -113,8 +112,13 @@
         cubic-bezier(0.22, 1, 0.36, 1) forwards;
     }
 
+    .residente h2 {
+      font-size: clamp(1.5rem, 2.5vw, 2.4rem);
+      font-weight: 700;
+    }
+
     /* =================================
-       NO RESIDENTE
+       NO RESIDENTE - MÁS PEQUEÑO
     ================================= */
 
     .no-residente {
@@ -135,11 +139,12 @@
     }
 
     .no-residente h2 {
-      font-size: clamp(1.1rem, 1.8vw, 1.8rem);
+      font-size: clamp(1.3rem, 2.2vw, 2rem);
+      font-weight: 700;
     }
 
     /* =================================
-       BLOQUES DERECHA
+       BLOQUES DERECHA - MÁS PEQUEÑOS
     ================================= */
 
     .colombia-residente {
@@ -154,6 +159,11 @@
       transform: translateX(120px);
     }
 
+    .colombia-residente h2 {
+      font-size: clamp(1rem, 1.6vw, 1.5rem);
+      font-weight: 600;
+    }
+
     .exterior {
       right: 0;
       top: 175px;
@@ -166,6 +176,11 @@
       transform: translateX(120px);
     }
 
+    .exterior h2 {
+      font-size: clamp(0.9rem, 1.4vw, 1.3rem);
+      font-weight: 600;
+    }
+
     .colombia-no-residente {
       right: 0;
       bottom: 30px;
@@ -176,6 +191,11 @@
       background: #4d62c8;
 
       transform: translateX(120px);
+    }
+
+    .colombia-no-residente h2 {
+      font-size: clamp(1rem, 1.6vw, 1.5rem);
+      font-weight: 600;
     }
 
     .colombia-residente.visible,
@@ -360,9 +380,25 @@
         display: none;
       }
 
-      .bloque h2,
+      .renta h2 {
+        font-size: clamp(2rem, 7vw, 3rem);
+      }
+
+      .residente h2 {
+        font-size: clamp(1.3rem, 5vw, 2rem);
+      }
+
       .no-residente h2 {
-        font-size: clamp(1.2rem, 5vw, 1.8rem);
+        font-size: clamp(1.2rem, 4.5vw, 1.8rem);
+      }
+
+      .colombia-residente h2,
+      .colombia-no-residente h2 {
+        font-size: clamp(1rem, 3.5vw, 1.5rem);
+      }
+
+      .exterior h2 {
+        font-size: clamp(0.9rem, 3vw, 1.3rem);
       }
     }
 
