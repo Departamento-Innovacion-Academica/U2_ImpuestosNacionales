@@ -172,8 +172,9 @@
       transform: rotateY(180deg);
       -webkit-transform: rotateY(180deg);
       border-color: #356289;
-      align-items: center;
-      text-align: center;
+      align-items: flex-start;
+      text-align: left;
+      padding: 28px 22px 24px;
     }
 
     .flip-card-back .back-label {
@@ -187,12 +188,15 @@
       padding-bottom: 8px;
       width: 60%;
       font-family: 'Poppins', sans-serif;
+      text-align: left;
     }
 
     .flip-card-back ul {
       list-style: none;
       padding: 0;
       font-family: 'Poppins', sans-serif;
+      width: 100%;
+      text-align: left;
     }
 
     .flip-card-back ul li {
@@ -202,10 +206,15 @@
       font-weight: 400;
       padding: 2px 0;
       font-family: 'Poppins', sans-serif;
+      text-align: left;
+      padding-left: 1.2rem;
+      position: relative;
     }
 
     .flip-card-back ul li::before {
-      content: '▸ ';
+      content: '▸';
+      position: absolute;
+      left: 0;
       color: #356289;
       font-weight: 700;
     }
@@ -327,7 +336,7 @@
             <div class="click-hint">↻ Gira la tarjeta</div>
           </label>
           <label class="flip-card-back" for="flip-1">
-            <div class="back-label">Requisitos</div>
+            <div class="back-label">Requisitos Esenciales</div>
             <ul>
               <li>Causalidad</li>
               <li>Necesidad</li>
@@ -348,7 +357,7 @@
             <div class="click-hint">↻ Gira la tarjeta</div>
           </label>
           <label class="flip-card-back" for="flip-2">
-            <div class="back-label">Requisitos</div>
+            <div class="back-label">Requisitos de Fondo</div>
             <ul>
               <li>Realización</li>
               <li>Imputabilidad</li>
@@ -369,7 +378,7 @@
             <div class="click-hint">↻ Gira la tarjeta</div>
           </label>
           <label class="flip-card-back" for="flip-3">
-            <div class="back-label">Requisitos</div>
+            <div class="back-label">Requisitos Formales</div>
             <ul>
               <li>Documentos Electrónicos</li>
               <li>Retenciones</li>
